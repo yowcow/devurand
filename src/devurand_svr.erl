@@ -54,7 +54,9 @@ handle_info(Req, State) ->
     {noreply, State}.
 
 %% API
--spec start(proplists:proplist()) -> ok.
+-spec start(proplists:proplist()) -> ignore
+                                   | {error, term()}
+                                   | {ok, pid()}.
 start(Args) ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, Args, []).
 
