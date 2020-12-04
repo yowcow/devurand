@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/yowcow/devurand.svg?branch=main)](https://travis-ci.com/yowcow/devurand)
+
 devurand
 ========
 
