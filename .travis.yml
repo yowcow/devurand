@@ -1,0 +1,9 @@
+language: erlang
+
+otp_release:
+  - "21.3"
+  - "22.3"
+  - "23.0"
+
+script:
+  - rebar3 do eunit,ct,dialyzer
