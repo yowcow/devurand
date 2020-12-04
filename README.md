@@ -11,5 +11,20 @@ Build
 How to Use
 ----------
 
-1. Start application `devurand_app`
-2. Call `devurand:read(hex, ByteLength)`
+### Configure
+
+In `sys.config`, have path to `urandom` configured:
+
+```erlang
+[
+ {devurand, [{path, "/dev/urandom"}]}
+].
+```
+
+### Start application
+
+In your `.app`, have `devurand` in the list of depending applications.
+
+### Enjoy
+
+Just call `devurand:read(hex, 4)` to generate 4 bytes of random binary in hex string.

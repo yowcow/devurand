@@ -7,10 +7,18 @@
 
 -behaviour(application).
 
--export([start/2, stop/1]).
+-export([
+         start/2,
+         stop/1
+        ]).
+
+-define(APP_NAME, devurand).
 
 start(_StartType, _StartArgs) ->
-    devurand_sup:start_link().
+    {ok, Path} = application:get_env(?APP_NAME, path),
+    devurand_sup:start_link([
+                             [{path, Path}]
+                            ]).
 
 stop(_State) ->
     ok.
