@@ -42,3 +42,27 @@ hex(12) -> <<"c">>;
 hex(13) -> <<"d">>;
 hex(14) -> <<"e">>;
 hex(15) -> <<"f">>.
+
+
+-ifdef(TEST).
+-include_lib("eunit/include/eunit.hrl").
+
+to_hex_test_() ->
+    Cases = [
+             {
+              "empty binary",
+              <<>>,
+              <<>>
+             },
+             {
+              "ordered binary",
+              <<1, 2, 255, 254>>,
+              <<"0102fffe">>
+             }
+            ],
+    F = fun({Title, Input, Expected}) ->
+                Actual = to_hex(Input, <<>>),
+                {Title, ?_assertEqual(Expected, Actual)}
+        end,
+    lists:map(F, Cases).
+-endif.
