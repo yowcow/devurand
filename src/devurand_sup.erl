@@ -33,8 +33,8 @@ init(Args) ->
                 },
     ChildSpecs = [
                   #{
-                    id => devurand_server,
-                    start => {devurand_server, start, Args},
+                    id => devurand_srv,
+                    start => {devurand_srv, start, Args},
                     restart => permanent
                    }
                  ],

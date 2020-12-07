@@ -1,4 +1,4 @@
--module(devurand_server).
+-module(devurand_srv).
 
 -behavior(gen_server).
 

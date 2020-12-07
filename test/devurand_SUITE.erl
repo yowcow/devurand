@@ -24,11 +24,11 @@ init_per_testcase(_, Config) ->
     Args = [
             {path, ?config(data_dir, Config)++"example-urandom"}
            ],
-    {ok, Pid} = devurand_server:start(Args),
-    [{devurand_server, Pid}|Config].
+    {ok, Pid} = devurand_srv:start(Args),
+    [{devurand_srv, Pid}|Config].
 
 end_per_testcase(_, _) ->
-    ok = devurand_server:stop(),
+    ok = devurand_srv:stop(),
     ok.
 
 all() ->
