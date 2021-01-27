@@ -3,15 +3,18 @@
 -export([read/2]).
 
 -type format() :: binary | hex.
--type output() :: {ok, term()} | devurand_svr:output().
+-type output() :: binary().
 
 -spec read(format(), integer()) -> output().
 read(binary, Bytes) ->
-    devurand_svr:read(Bytes);
+    case devurand_svr:read(Bytes) of
+        {ok, Bin} -> Bin;
+        Err -> throw(Err)
+    end;
 read(hex, Bytes) ->
     case devurand_svr:read(Bytes) of
-        {ok, Bin} -> {ok, to_hex(Bin)};
-        Err -> Err
+        {ok, Bin} -> to_hex(Bin);
+        Err -> throw(Err)
     end.
 
 -spec to_hex(binary()) -> binary().
@@ -66,4 +69,5 @@ to_hex_test_() ->
                 {Title, ?_assertEqual(Expected, Actual)}
         end,
     lists:map(F, Cases).
+
 -endif.

@@ -42,25 +42,25 @@ all() ->
     ].
 
 read_binary_1_byte(_) ->
-    {ok, Bin} = devurand:read(binary, 1),
+    Bin = devurand:read(binary, 1),
     ?assertEqual(<<190>>, Bin).
 
 read_binary_2_bytes(_) ->
-    {ok, Bin} = devurand:read(binary, 2),
+    Bin = devurand:read(binary, 2),
     ?assertEqual(<<190, 113>>, Bin).
 
 read_binary_4_bytes(_) ->
-    {ok, Bin} = devurand:read(binary, 4),
+    Bin = devurand:read(binary, 4),
     ?assertEqual(<<190, 113, 76, 205>>, Bin).
 
 read_hex_1_byte(_) ->
-    {ok, Bin} = devurand:read(hex, 1),
+    Bin = devurand:read(hex, 1),
     ?assertEqual(<<"be">>, Bin).
 
 read_hex_2_bytes(_) ->
-    {ok, Bin} = devurand:read(hex, 2),
+    Bin = devurand:read(hex, 2),
     ?assertEqual(<<"be71">>, Bin).
 
 read_hex_4_bytes(_) ->
-    {ok, Bin} = devurand:read(hex, 4),
+    Bin = devurand:read(hex, 4),
     ?assertEqual(<<"be714ccd">>, Bin).
