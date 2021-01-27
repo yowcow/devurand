@@ -3,13 +3,13 @@
 -export([read/2]).
 
 -type format() :: binary | hex.
--type output() :: {ok, term()} | devurand_srv:output().
+-type output() :: {ok, term()} | devurand_svr:output().
 
 -spec read(format(), integer()) -> output().
 read(binary, Bytes) ->
-    devurand_srv:read(Bytes);
+    devurand_svr:read(Bytes);
 read(hex, Bytes) ->
-    case devurand_srv:read(Bytes) of
+    case devurand_svr:read(Bytes) of
         {ok, Bin} -> {ok, to_hex(Bin)};
         Err -> Err
     end.
