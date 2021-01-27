@@ -27,15 +27,13 @@
 -define(config(K, L), proplists:get_value(K, L, undefined)).
 
 init(Args) ->
-    logger:notice("(init) args: ~p", [Args]),
     {ok, Device} = file:open(?config(path, Args), [read, binary]),
     {ok, #{device => Device}}.
 
 terminate(
-  Reason,
-  #{device := Device} = State
+  _,
+  #{device := Device}
  ) ->
-    logger:notice("(terminate) reason: ~p, state: ~p", [Reason, State]),
     file:close(Device).
 
 handle_call(

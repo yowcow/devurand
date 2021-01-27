@@ -15,7 +15,7 @@
 -define(APP_NAME, devurand).
 
 start(_StartType, _StartArgs) ->
-    {ok, Path} = application:get_env(?APP_NAME, path),
+    Path = application:get_env(?APP_NAME, path, "/dev/urandom"),
     devurand_sup:start_link([
                              [{path, Path}]
                             ]).
